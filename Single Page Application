@@ -1,0 +1,50 @@
+# Define a class representing a single page in a Single Page Application (SPA)
+class Page:
+    def __init__(self, name):
+        self.name = name
+        self.content = ""
+    
+    def add_content(self, content):
+        self.content += content
+    
+    def display(self):
+        print(f"Displaying content of page '{self.name}':")
+        print(self.content)
+
+# Define a class representing the SPA itself
+class SinglePageApplication:
+    def __init__(self):
+        self.pages = {}
+    
+    def add_page(self, page):
+        self.pages[page.name] = page
+    
+    def navigate_to(self, page_name):
+        if page_name in self.pages:
+            self.pages[page_name].display()
+        else:
+            print(f"Error: Page '{page_name}' not found in the application.")
+
+# Create instances of pages
+home_page = Page("Home")
+home_page.add_content("Welcome to the Home Page!")
+
+about_page = Page("About")
+about_page.add_content("This is the About Page. Learn more about us here.")
+
+contact_page = Page("Contact")
+contact_page.add_content("Contact us at contact@example.com.")
+
+# Create instance of Single Page Application
+my_spa = SinglePageApplication()
+
+# Add pages to the SPA
+my_spa.add_page(home_page)
+my_spa.add_page(about_page)
+my_spa.add_page(contact_page)
+
+# Navigate to a page
+my_spa.navigate_to("Home")
+my_spa.navigate_to("About")
+my_spa.navigate_to("Contact")
+my_spa.navigate_to("Invalid Page")
